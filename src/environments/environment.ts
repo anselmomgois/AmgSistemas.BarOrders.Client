@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API : 'http://localhost/josemeaomakeup/api'
+  API : 'http://localhost/AmgSistemas.BarOrders/api'
 };
 
 /*

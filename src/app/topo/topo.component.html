@@ -1,1 +1,10 @@
-<p>topo works!</p>
+<header class="fixed-top" style="background: black !important;">
+    <div class="container">
+        <nav class="navbar navbar-expand navbar-dark linha_botton "> 
+            <a class="navbar-brand" href="#" *ngIf="filial != undefined">      
+                <img src="../../assets/logo.png" width="23" height="35" class="d-inline-block align-top" alt="" loading="lazy">
+               {{filial.empresa.descricao}}
+            </a>
+        </nav>
+    </div>
+  </header>
