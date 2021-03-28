@@ -1,0 +1,21 @@
+<div class="container" style="padding-top: 10px;">
+   
+    <div class="row" *ngFor="let item of produtosFilial" style=" border: 1px solid black;">
+        <div class="col-1" style="border: 1px solid red">
+            <img [src]="item.imageUrl" width="50" height="50" class="d-inline-block align-top" alt="">
+        </div>
+        <div class="col-6">
+            <div class="row" style="border: 1px solid blue">
+                <div class="col-12 titulo_1">
+                    <h5>{{item.descricao}}</h5>
+                </div>
+                <div class="col-12 fonte_site" style="font-size: 10px;">
+                    Coca Cola 350 ml
+                </div>
+            </div>           
+        </div>
+        <div class="col-3" style="padding-top: 10px;">
+            {{item.valor|currency:'BRL':true}}
+        </div>
+    </div>
+</div>

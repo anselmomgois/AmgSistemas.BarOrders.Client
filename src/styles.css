@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.titulo_1 {
+    font-family: 'Filson Font',sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.fonte_site {
+    font-family: 'Filson Font',sans-serif !important;    
+}
