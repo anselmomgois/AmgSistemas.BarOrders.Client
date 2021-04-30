@@ -3,8 +3,18 @@
         <nav class="navbar navbar-expand navbar-dark linha_botton "> 
             <a class="navbar-brand" href="#" *ngIf="filial != undefined">      
                 <img [src]="imageUrl" width="50" height="50" class="d-inline-block align-top" alt="">
-               {{filial.empresa.descricao}}
+                {{filial.empresa.descricao}}
             </a>
+        </nav> 
+        <nav class="navbar navbar-expand navbar-dark"> 
+            <div class="collapse navbar-collapse">
+                <ul  *ngFor="let item of gruposProdutos" class="navbar-nav efeitoMenu">
+                    <li class="nav-item">
+                        <a class="nav-link active"  routerLinkActive="active"  [routerLink]='"."' [fragment]="item.identificador">{{item.descricao}}</a>
+                    </li>
+                </ul>
+            </div>
+            
         </nav>
     </div>
-  </header>
+</header>

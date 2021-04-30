@@ -1,3 +1,4 @@
+import { GrupoProduto } from './../classes/grupoProduto.model';
 import { RetornoGenerico } from './../classes/respostaGenerico.model';
 import { FilialService } from './../filial.service';
 import { Component, Input, OnInit } from '@angular/core';
@@ -19,10 +20,13 @@ export class TopoComponent implements OnInit {
     
     @Input() public filial:Filial
     @Input() public imageUrl:any    
+    @Input() public gruposProdutos:GrupoProduto[]
 
     ngOnInit(): void {
       
       console.log('passou aqui')
+      console.log(this.filial)
+      console.log(this.gruposProdutos)
       //this.filialService.RecuperarFilial('1')
       //.then((retorno:RetornoGenerico) => {
       //  this.filial = retorno.retorno

@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container fixed-top">
   <ul class="nav nav-tabs" style="padding-top: 80px;">
     <li *ngFor="let item of gruposProdutos" class="nav-item">
-      <a class="nav-link" aria-current="page" href="#">{{item.descricao}}</a>
+      <a class="nav-link" aria-current="page" [routerLink]='"."' [fragment]="item.identificador" >{{item.descricao}}</a>
     </li>
   </ul>
 </div>

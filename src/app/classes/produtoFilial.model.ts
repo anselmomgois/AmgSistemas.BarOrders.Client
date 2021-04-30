@@ -7,5 +7,8 @@ export class ProdutoFilial {
                 public imagem:any,
                 public valor:number,
                 public quantidade:number,
-                public imageUrl:any){}
+                public imageUrl:any,
+                public identificadorGrupoProduto:string,
+                public descricaoGrupoProduto:string,
+                public bolExibirGrupoProduto:boolean){}
 }

@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { HomeComponent } from './home/home.component';
+import { routerOptions } from './app.parametros';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES, routerOptions)
   ],
   providers: [FilialService],
   bootstrap: [AppComponent]

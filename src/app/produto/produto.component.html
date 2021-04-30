@@ -1,21 +1,45 @@
-<div class="container" style="padding-top: 10px;">
-   
-    <div class="row" *ngFor="let item of produtosFilial" style=" border: 1px solid black;">
-        <div class="col-1" style="border: 1px solid red">
-            <img [src]="item.imageUrl" width="50" height="50" class="d-inline-block align-top" alt="">
+<div class="container" style="padding-top: 150px;">
+    
+    <div class="row" *ngFor="let item of produtosFilial" style="padding-top: 10px;">
+        <div class="fonte_site" style="padding-top: 10px;" *ngIf="item.bolExibirGrupoProduto">
+            <h2 [attr.id]='item.identificadorGrupoProduto'>{{item.descricaoGrupoProduto}}</h2>
         </div>
-        <div class="col-6">
-            <div class="row" style="border: 1px solid blue">
-                <div class="col-12 titulo_1">
-                    <h5>{{item.descricao}}</h5>
+        <div id="divProdutos" class="col-12 content borda">
+            <div class="row">
+                <div class="col-1">
+                    <img [src]="item.imageUrl" style="border-radius: 30px;" width="50" height="50" class="d-inline-block align-top" alt="">
                 </div>
-                <div class="col-12 fonte_site" style="font-size: 10px;">
-                    Coca Cola 350 ml
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12 titulo_1">
+                            <h5>{{item.descricao}}</h5>
+                        </div>
+                        <div class="col-12 fonte_site" style="font-size: 10px;">
+                            {{item.observacao}}
+                        </div>
+                    </div>           
                 </div>
-            </div>           
-        </div>
-        <div class="col-3" style="padding-top: 10px;">
-            {{item.valor|currency:'BRL':true}}
+                <div class="col-2" style="padding-top: 10px">
+                    {{item.valor|currency:'BRL':true}}
+                </div>
+                <div class="col-1" style="padding-top: 10px">
+                    <div class="row">
+                        <div class="col-3 margem_quantidade">
+                            <i class="fas fa-minus-circle botao_quantidade" ></i>
+                        </div>
+                        <div class="col-6 margem_quantidade">
+                            <input type="text" id="txtNome" style="width: 40px; border-radius: 20px;" disabled>                            
+                        </div>
+                        <div class="col-3 margem_quantidade">
+                            <i class="fas fa-plus-circle botao_quantidade" ></i>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="col-1"></div>
+                <div class="col-1" style="padding-top: 10px;">
+                    <i class="fas fa-plus-circle botao"></i>
+                </div>
+            </div>
         </div>
     </div>
 </div>

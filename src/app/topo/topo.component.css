@@ -1,3 +1,7 @@
 .linha_botton {
     border-bottom: gray 1px solid;
   }
+
+  .efeitoMenu a:hover {
+    color: gray !important;
+  } 

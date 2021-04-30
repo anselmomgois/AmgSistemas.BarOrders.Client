@@ -50,11 +50,19 @@ export class HomeComponent implements OnInit {
           this.produtoFilialService.RecuperarProdutosFilial(parametros.id, this.filial.empresa.identificador)
           .subscribe((retorno:RetornoGenerico)=> {
             this.produtosFilial = retorno.retorno
+            let idGrupoProduto:string
+            
             this.produtosFilial.forEach((produto:ProdutoFilial) => {
+              if(idGrupoProduto !== produto.identificadorGrupoProduto)
+              {
+                produto.bolExibirGrupoProduto = true
+              }
+              
+              idGrupoProduto = produto.identificadorGrupoProduto
               produto.imageUrl = this.sanitizer.bypassSecurityTrustUrl ('data:image/jpg;base64,' + produto.imagem); 
             });
-
-            console.log(this.produtosFilial)
+            
+            console.log('PRODUTO ' + this.produtosFilial)
           })
           
         })
