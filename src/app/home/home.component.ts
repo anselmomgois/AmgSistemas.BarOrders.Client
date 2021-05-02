@@ -1,3 +1,5 @@
+import { Mesa } from './../classes/mesa.model';
+import { MesaService } from './../mesa.service';
 import { ProdutoFilial } from './../classes/produtoFilial.model';
 import { ProdutoFilialService } from './../produtoFilial.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -8,12 +10,13 @@ import { FilialService } from './../filial.service';
 import { Filial } from './../classes/filial.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers:[GrupoProdutoServices, ProdutoFilialService]
+  providers:[GrupoProdutoServices, ProdutoFilialService,MesaService]
 })
 export class HomeComponent implements OnInit {
   
@@ -21,12 +24,15 @@ export class HomeComponent implements OnInit {
   public gruposProdutos:GrupoProduto[]
   public imageUrlHome:any
   public produtosFilial:ProdutoFilial[]
+  public mesa:Mesa
   
   constructor(private filialService:FilialService,
     private route:ActivatedRoute,
     private grupoProdutoService:GrupoProdutoServices,
     private sanitizer: DomSanitizer,
-    private produtoFilialService:ProdutoFilialService){}
+    private produtoFilialService:ProdutoFilialService,
+    private mesaService:MesaService){}
+    private tempoObservableSubscription: Subscription
     
     ngOnInit(): void {
       
@@ -62,7 +68,18 @@ export class HomeComponent implements OnInit {
               produto.imageUrl = this.sanitizer.bypassSecurityTrustUrl ('data:image/jpg;base64,' + produto.imagem); 
             });
             
-            console.log('PRODUTO ' + this.produtosFilial)
+            let tempo = interval(2000)
+            this.tempoObservableSubscription = tempo.subscribe((intervalo:number) => {
+              
+              this.mesaService.RecuperarMesa(parametros.idMesa)
+              .then((retornoMesa:RetornoGenerico)=> {
+                this.mesa = retornoMesa.retorno
+                if(this.mesa.codigoEstado === 'OC') {
+                  this.tempoObservableSubscription.unsubscribe()
+                }
+              } )
+              
+            })
           })
           
         })

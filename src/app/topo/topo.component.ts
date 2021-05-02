@@ -1,3 +1,4 @@
+import { Mesa } from './../classes/mesa.model';
 import { GrupoProduto } from './../classes/grupoProduto.model';
 import { RetornoGenerico } from './../classes/respostaGenerico.model';
 import { FilialService } from './../filial.service';
@@ -21,6 +22,7 @@ export class TopoComponent implements OnInit {
     @Input() public filial:Filial
     @Input() public imageUrl:any    
     @Input() public gruposProdutos:GrupoProduto[]
+    @Input() public mesa:Mesa
 
     ngOnInit(): void {
       

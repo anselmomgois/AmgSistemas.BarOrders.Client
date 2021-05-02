@@ -6,7 +6,7 @@
         </div>
         <div id="divProdutos" class="col-12 content borda">
             <div class="row">
-                <div class="col-1">
+                <div class="col-1" style="padding-top: 2px; padding-bottom: 2px;">
                     <img [src]="item.imageUrl" style="border-radius: 30px;" width="50" height="50" class="d-inline-block align-top" alt="">
                 </div>
                 <div class="col-6">
@@ -19,10 +19,13 @@
                         </div>
                     </div>           
                 </div>
-                <div class="col-2" style="padding-top: 10px">
+                <div *ngIf="mesa.codigoEstado ==='OC'" class="col-2" style="padding-top: 10px">
                     {{item.valor|currency:'BRL':true}}
                 </div>
-                <div class="col-1" style="padding-top: 10px">
+                <div *ngIf="mesa.codigoEstado !=='OC'" class="col-5" style="padding-top: 10px; text-align: center;">
+                    {{item.valor|currency:'BRL':true}}
+                </div>
+                <div *ngIf="mesa.codigoEstado ==='OC'" class="col-1" style="padding-top: 10px">
                     <div class="row">
                         <div class="col-3 margem_quantidade">
                             <i class="fas fa-minus-circle botao_quantidade" ></i>
@@ -35,8 +38,8 @@
                         </div>
                     </div>                    
                 </div>
-                <div class="col-1"></div>
-                <div class="col-1" style="padding-top: 10px;">
+                <div *ngIf="mesa.codigoEstado ==='OC'" class="col-1"></div>
+                <div *ngIf="mesa.codigoEstado ==='OC'" class="col-1" style="padding-top: 10px;">
                     <i class="fas fa-plus-circle botao"></i>
                 </div>
             </div>

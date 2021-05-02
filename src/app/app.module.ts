@@ -12,6 +12,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { HomeComponent } from './home/home.component';
 import { routerOptions } from './app.parametros';
+import { RodapeComponent } from './rodape/rodape.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { routerOptions } from './app.parametros';
     TopoComponent,
     MenuComponent,
     ProdutoComponent,
-    HomeComponent
+    HomeComponent,
+    RodapeComponent
   ],
   imports: [
     BrowserModule,

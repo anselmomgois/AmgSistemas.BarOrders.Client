@@ -1,3 +1,4 @@
+import { Mesa } from './../classes/mesa.model';
 import { ProdutoFilial } from './../classes/produtoFilial.model';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -9,6 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProdutoComponent implements OnInit {
 
   @Input() public produtosFilial:ProdutoFilial[]
+  @Input() public mesa:Mesa
   
   constructor() { }
 

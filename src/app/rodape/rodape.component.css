@@ -1,0 +1,11 @@
+ 
+  .conteudo a:hover {
+    color: pink !important;
+  }
+
+  .fundo {
+    margin-top: 10px !important; 
+    font-family: Calibri;
+    color: black;
+    background-color: black;
+  }

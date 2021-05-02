@@ -5,6 +5,22 @@
                 <img [src]="imageUrl" width="50" height="50" class="d-inline-block align-top" alt="">
                 {{filial.empresa.descricao}}
             </a>
+            
+            <div class="row" style="width: 100%;">
+                <div class="col-12 fonte_site centralizar_texto">
+                    <div class="row">
+                        <div class="col-12">
+                            <span style="color: white;">Mesa  {{mesa.codigo}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 fonte_texto">
+                            <span *ngIf="mesa.codigoEstado==='LV'" style="color: red;">Mesa bloqueda, por favor chamar o antendente para liberar.</span> 
+                            <span *ngIf="mesa.codigoEstado==='OC'" style="color: green;">Mesa Liberada, você já pode fazer seus pedidos.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </nav> 
         <nav class="navbar navbar-expand navbar-dark"> 
             <div class="collapse navbar-collapse">

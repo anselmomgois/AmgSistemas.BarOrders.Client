@@ -7,3 +7,7 @@
 .fonte_site {
     font-family: 'Filson Font',sans-serif !important;    
 }
+
+.centralizar_texto {
+    text-align: center;
+}

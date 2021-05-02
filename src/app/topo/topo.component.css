@@ -5,3 +5,8 @@
   .efeitoMenu a:hover {
     color: gray !important;
   } 
+
+  .fonte_texto {
+    font-size: 12px;
+    font-weight: bold;
+  }
