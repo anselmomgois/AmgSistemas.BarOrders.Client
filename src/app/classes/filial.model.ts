@@ -1,4 +1,4 @@
-import { empresa } from './empresa.model';
+import { Empresa } from './empresa.model';
 export class Filial {
 
     constructor(public identificador:string,
@@ -6,5 +6,5 @@ export class Filial {
                 public descricao:string,
                 public trabalhaPorMesa: boolean,
                 public solicitarTelefone: boolean,
-                public empresa:empresa){}
+                public empresa:Empresa){}
 }

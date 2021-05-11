@@ -1,3 +1,4 @@
+import { MesaAtendente } from './../classes/mesaAtendente.model';
 import { Mesa } from './../classes/mesa.model';
 import { MesaService } from './../mesa.service';
 import { ProdutoFilial } from './../classes/produtoFilial.model';
@@ -40,49 +41,62 @@ export class HomeComponent implements OnInit {
         
         this.filialService.RecuperarFilial(parametros.id)
         .then((retorno:RetornoGenerico) => {
-          
           this.filial = retorno.retorno  
-          this.imageUrlHome = this.sanitizer.bypassSecurityTrustUrl ('data:image/jpg;base64,' + this.filial.empresa.logo);  
           
-          this.grupoProdutoService.RecuperarGruposProdutos(parametros.id)
-          .subscribe((retorno:RetornoGenerico) => {
-            this.gruposProdutos = retorno.retorno;
-            console.log(this.gruposProdutos)
-          }, 
-          (error:any) => {
-            console.log(error)
-          })
           
-          this.produtoFilialService.RecuperarProdutosFilial(parametros.id, this.filial.empresa.identificador)
-          .subscribe((retorno:RetornoGenerico)=> {
-            this.produtosFilial = retorno.retorno
-            let idGrupoProduto:string
+          if (this.filial !== undefined && this.filial !== null) {
+            this.imageUrlHome = this.sanitizer.bypassSecurityTrustUrl ('data:image/jpg;base64,' + this.filial.empresa.logo);  
             
-            this.produtosFilial.forEach((produto:ProdutoFilial) => {
-              if(idGrupoProduto !== produto.identificadorGrupoProduto)
-              {
-                produto.bolExibirGrupoProduto = true
-              }
-              
-              idGrupoProduto = produto.identificadorGrupoProduto
-              produto.imageUrl = this.sanitizer.bypassSecurityTrustUrl ('data:image/jpg;base64,' + produto.imagem); 
-            });
             
-            let tempo = interval(2000)
-            this.tempoObservableSubscription = tempo.subscribe((intervalo:number) => {
-              
-              this.mesaService.RecuperarMesa(parametros.idMesa)
-              .then((retornoMesa:RetornoGenerico)=> {
-                this.mesa = retornoMesa.retorno
-                if(this.mesa.codigoEstado === 'OC') {
-                  this.tempoObservableSubscription.unsubscribe()
-                }
-              } )
-              
+            this.grupoProdutoService.RecuperarGruposProdutos(parametros.id)
+            .subscribe((retorno:RetornoGenerico) => {
+              this.gruposProdutos = retorno.retorno;
+              console.log(this.gruposProdutos)
+            }, 
+            (error:any) => {
+              console.log(error)
             })
-          })
-          
+            
+            this.produtoFilialService.RecuperarProdutosFilial(parametros.id, this.filial.empresa.identificador)
+            .subscribe((retorno:RetornoGenerico)=> {
+              this.produtosFilial = retorno.retorno
+              let idGrupoProduto:string
+              
+              this.produtosFilial.forEach((produto:ProdutoFilial) => {
+                if(idGrupoProduto !== produto.identificadorGrupoProduto)
+                {
+                  produto.bolExibirGrupoProduto = true
+                }
+                
+                idGrupoProduto = produto.identificadorGrupoProduto
+                produto.imageUrl = this.sanitizer.bypassSecurityTrustUrl ('data:image/jpg;base64,' + produto.imagem); 
+              });
+              console.log(this.produtosFilial)
+              let tempo = interval(2000)
+              this.tempoObservableSubscription = tempo.subscribe((intervalo:number) => {
+                
+                this.mesaService.RecuperarMesa(parametros.idMesa)
+                .then((retornoMesa:RetornoGenerico)=> {
+                  this.mesa = retornoMesa.retorno
+                  console.log(this.mesa)
+                  if(this.mesa.codigoEstado === 'OC') {
+                    this.tempoObservableSubscription.unsubscribe()
+                    if(this.mesa.mesasAtendentes !== undefined && this.mesa.mesasAtendentes.length > 0){
+                      if(this.filial.trabalhaPorMesa)
+                      {
+                        this.mesa.mesaAtendenteCorrente = this.mesa.mesasAtendentes[0]
+                      }
+                    }
+                  }
+                } )
+                
+              })
+            }
+            
+            )
+          }
         })
+        
         
       })
       

@@ -1,4 +1,4 @@
-export class empresa {
+export class Empresa {
 
     constructor(public identificador:string,
                 public codigo:string,

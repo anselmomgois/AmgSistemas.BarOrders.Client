@@ -6,8 +6,8 @@
                 {{filial.empresa.descricao}}
             </a>
             
-            <div class="row" style="width: 100%;">
-                <div class="col-12 fonte_site centralizar_texto">
+            <div *ngIf="mesa !== undefined" class="row" style="width: 100%;">
+                <div *ngIf="mesa.codigoEstado !=='OC'" class="col-12 fonte_site centralizar_texto">
                     <div class="row">
                         <div class="col-12">
                             <span style="color: white;">Mesa  {{mesa.codigo}}</span>
@@ -20,10 +20,45 @@
                         </div>
                     </div>
                 </div>
+                <div *ngIf="mesa.codigoEstado==='OC'" class="col-8 fonte_site centralizar_texto">
+                    <div class="row">
+                        <div class="col-12">
+                            <span style="color: white;">Mesa  {{mesa.codigo}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 fonte_texto">
+                            <span *ngIf="mesa.codigoEstado==='LV'" style="color: red;">Mesa bloqueda, por favor chamar o antendente para liberar.</span> 
+                            <span *ngIf="mesa.codigoEstado==='OC'" style="color: green;">Mesa Liberada, você já pode fazer seus pedidos.</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="mesa.codigoEstado==='OC'" class="col-3">
+                    <div class="fonte_texto">
+                        <div class="row">
+                            <div class="col-12">
+                                <span style="color: white;">Atendente:</span>
+                            </div>                            
+                        </div>  
+                        <div class="row">
+                            <div class="col-12">
+                                <span style="color: white;">{{mesa.mesaAtendenteCorrente.nomeAtendente}}</span>
+                            </div>
+                        </div>                      
+                    </div>
+                </div>
+                <div *ngIf="mesa.codigoEstado==='OC'" class="col-1">
+                    <span class="fa-stack">
+                    <i style="color: white;" class="fas fa-shopping-cart fa-stack-1x"> </i>
+                    <div style="background-color: red; border-radius: 30px; width: 10px; height: 10px;" class="fa-stack">
+                       <span style="color: white; font-size: xx-small;" class="fonte_texto">0</span>
+                    </div>
+                </span>
+                </div>
             </div>
         </nav> 
         <nav class="navbar navbar-expand navbar-dark"> 
-            <div class="collapse navbar-collapse">
+            <div *ngIf="gruposProdutos !== undefined" class="collapse navbar-collapse">
                 <ul  *ngFor="let item of gruposProdutos" class="navbar-nav efeitoMenu">
                     <li class="nav-item">
                         <a class="nav-link active"  routerLinkActive="active"  [routerLink]='"."' [fragment]="item.identificador">{{item.descricao}}</a>
