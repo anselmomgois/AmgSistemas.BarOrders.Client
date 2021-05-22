@@ -1,0 +1,1 @@
+export const CONST_EXIBIR_CARRINHO = 'EXIBIR'

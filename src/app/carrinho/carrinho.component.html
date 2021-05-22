@@ -1,0 +1,55 @@
+<div class="container" style="padding-top: 90px; padding-bottom: 60px;">
+    <h1 class="fonte_texto">Carrinho</h1>
+    <table class="table table-striped table-bordered table-hover table-sm">
+        <thead class="thead-dark">
+            <th class="ColunaNumerica">
+                Item
+            </th>
+            <th>
+                Descrição Produto
+            </th>
+            <th class="ColunaNumerica" style="width: 80px !important;">
+                Quantidade
+            </th>
+            <th class="ColunaNumerica" style="width: 130px;">
+                Valor Unitário
+            </th>
+            <th class="ColunaNumerica" style="width: 130px;">
+                Valor Total
+            </th>
+            <th style="width: 30px;">
+                Remover
+            </th>
+        </thead>
+        <tr *ngFor="let item of carrinhoItens">            
+            <td class="ColunaNumerica">
+                {{item.item}}
+            </td>
+            <td>
+                {{item.descricao}}
+            </td>
+            <td class="ColunaNumerica" style="width: 80px !important;">
+                <div class="row">
+                    <div class="col-3 margem_quantidade">
+                        <button type="button" style="position: absolute; padding-top: 9px; padding-left: 3px;"  class="fas fa-minus-circle botao_quantidade"></button>
+                    </div>
+                    <div class="col-6 margem_quantidade" >
+                        <input type="text" id="txtQuantidade" style="width: 40px; border-radius: 20px; text-align: center;" [value]="item.quantidade" disabled>                            
+                    </div>
+                    <div class="col-3 margem_quantidade">
+                        <button type="button" style="position: absolute; padding-top: 9px; padding-right: 3px;"    class="fas fa-plus-circle botao_quantidade"></button>
+                    </div>
+                </div>
+            </td>
+            <td class="ColunaNumerica" style="width: 130px;">
+                {{item.valorUnitario|currency:'BRL':true}}
+            </td>
+            <td class="ColunaNumerica" style="width: 130px;">
+                {{item.valorTotal|currency:'BRL':true}}
+            </td>
+            <td class="divBotaoRemover">
+               <i class="fas fa-times-circle botaoRemover" (click)="removerItem(item)"></i>
+            </td>
+        </tr>
+    </table>
+</div>

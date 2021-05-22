@@ -20,6 +20,7 @@ export class FilialService {
                .toPromise()
                .then((resposta:RetornoGenerico) => {
                    this.filial = resposta.retorno
+                   localStorage.setItem('dadosFilial',JSON.stringify(this.filial))
                    return resposta;
                })
         

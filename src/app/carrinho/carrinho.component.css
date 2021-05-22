@@ -1,0 +1,34 @@
+.ColunaNumerica {
+    width: 100px;
+    text-align: center;
+}
+
+.botaoRemover {
+    color: red !important; 
+    font-size: 20px;
+    background-color: transparent; 
+    border: white 0px solid;    
+}
+
+.divBotaoRemover {
+    text-align: center;
+    width: 30px;
+}
+
+.divBotaoRemover i:hover {
+    cursor: pointer;
+}
+
+.botao_quantidade {
+    color: blue !important; 
+    font-size: 15px;
+    background-color: transparent; 
+    border: white 0px solid;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.margem_quantidade {
+    padding-left: 0px; 
+    padding-right: 0px;    
+}

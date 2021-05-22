@@ -1,3 +1,5 @@
+import { ProdutoFilialService } from './produtoFilial.service';
+import { CarrinhoService } from './carrinho.service';
 import { ROUTES } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +15,8 @@ import { ProdutoComponent } from './produto/produto.component';
 import { HomeComponent } from './home/home.component';
 import { routerOptions } from './app.parametros';
 import { RodapeComponent } from './rodape/rodape.component';
+import { ProdutoItemComponent } from './produto-item/produto-item.component';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,9 @@ import { RodapeComponent } from './rodape/rodape.component';
     MenuComponent,
     ProdutoComponent,
     HomeComponent,
-    RodapeComponent
+    RodapeComponent,
+    ProdutoItemComponent,
+    CarrinhoComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +35,7 @@ import { RodapeComponent } from './rodape/rodape.component';
     HttpClientModule,
     RouterModule.forRoot(ROUTES, routerOptions)
   ],
-  providers: [FilialService],
+  providers: [FilialService,CarrinhoService, ProdutoFilialService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

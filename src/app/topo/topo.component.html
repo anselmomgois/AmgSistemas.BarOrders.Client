@@ -48,26 +48,27 @@
                     </div>
                 </div>
                 <div *ngIf="mesa.codigoEstado==='OC'" class="col-1">
-                    <span class="fa-stack">
-                    <i style="color: white; font-size: 20px;" class="fas fa-shopping-cart fa-stack-1x"> </i>
-                    <div style="background-color: red; border-radius: 30px; width: 12px; height: 12px; margin-left: 17px;
-                                margin-bottom: 5px;" class="fa-stack">
-                       <span style="color: white; font-size: xx-small;  border-radius: 30px;
-                                     width: 5px; height: 5px; position: absolute; line-height: 1.5em; margin-left: 3px; " class="fonte_texto">0</span>
+                    <div class="fa-stack efeitoMouse" (click)="ExibirCarrinho()">
+                        <i style="color: white; font-size: 20px;" class="fas fa-shopping-cart fa-stack-1x"> </i>
+                        <div style="background-color: red; border-radius: 30px; width: 12px; height: 12px; margin-left: 17px;
+                        margin-bottom: 5px;" class="fa-stack">
+                        <span style="color: white; font-size: xx-small;  border-radius: 30px;
+                        width: 5px; height: 5px; position: absolute; line-height: 1.5em; margin-left: 3px; " 
+                        class="fonte_texto">{{quantidadeItens}}</span>
                     </div>
-                </span>
                 </div>
             </div>
-        </nav> 
-        <nav class="navbar navbar-expand navbar-dark"> 
-            <div *ngIf="gruposProdutos !== undefined" class="collapse navbar-collapse">
-                <ul  *ngFor="let item of gruposProdutos" class="navbar-nav efeitoMenu">
-                    <li class="nav-item">
-                        <a class="nav-link active"  routerLinkActive="active"  [routerLink]='"."' [fragment]="item.identificador">{{item.descricao}}</a>
-                    </li>
-                </ul>
-            </div>
-            
-        </nav>
-    </div>
+        </div>
+    </nav> 
+    <nav *ngIf="exibirCategorias" class="navbar navbar-expand navbar-dark"> 
+        <div *ngIf="gruposProdutos !== undefined" class="collapse navbar-collapse">
+            <ul  *ngFor="let item of gruposProdutos" class="navbar-nav efeitoMenu">
+                <li class="nav-item">
+                    <a class="nav-link active"  routerLinkActive="active"  [routerLink]='"."' [fragment]="item.identificador">{{item.descricao}}</a>
+                </li>
+            </ul>
+        </div>
+        
+    </nav>
+</div>
 </header>

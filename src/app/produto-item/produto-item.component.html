@@ -1,0 +1,40 @@
+<div id="divProdutos" class="col-12 content borda">
+    <div class="row">
+        <div class="col-1" style="padding-top: 2px; padding-bottom: 2px;">
+            <img [src]="produtoFilial.imageUrl" style="border-radius: 30px;" width="50" height="50" class="d-inline-block align-top" alt="">
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-12 titulo_1">
+                    <h5>{{produtoFilial.descricao}}</h5>
+                </div>
+                <div class="col-12 fonte_site" style="font-size: 10px;">
+                    {{produtoFilial.observacao}}
+                </div>
+            </div>           
+        </div>
+        <div *ngIf="mesa !== undefined && mesa.codigoEstado ==='OC'" class="col-2" style="padding-top: 10px">
+            {{produtoFilial.valor|currency:'BRL':true}}
+        </div>
+        <div *ngIf="mesa !== undefined && mesa.codigoEstado !=='OC'" class="col-5" style="padding-top: 10px; text-align: center;">
+            {{produtoFilial.valor|currency:'BRL':true}}
+        </div>
+        <div *ngIf="mesa !== undefined && mesa.codigoEstado ==='OC'" class="col-1" style="padding-top: 10px">
+            <div class="row">
+                <div class="col-3 margem_quantidade" >
+                    <button type="button"  (click)="Decrementar()"  class="fas fa-minus-circle botao_quantidade"></button>
+                </div>
+                <div class="col-6 margem_quantidade">
+                    <input type="text" id="txtQuantidade" style="width: 40px; border-radius: 20px; text-align: center;" [value]="produtoFilial.quantidadeSolicitada" disabled>                            
+                </div>
+                <div class="col-3 margem_quantidade">
+                    <button type="button"  (click)="Incrementar()"  class="fas fa-plus-circle botao_quantidade"></button>
+                </div>
+            </div>                    
+        </div>
+        <div *ngIf="mesa !== undefined && mesa.codigoEstado ==='OC'" class="col-1"></div>
+        <div *ngIf="mesa !== undefined && mesa.codigoEstado ==='OC'" class="col-1" style="padding-top: 10px;">
+            <button type="button"  (click)="AdicionarItem()"  class="fas fa-plus-circle botao"></button>
+        </div>
+    </div>
+</div>

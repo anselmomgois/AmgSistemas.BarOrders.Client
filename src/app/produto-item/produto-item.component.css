@@ -1,0 +1,32 @@
+#divProdutos div:hover {
+    background-color: lightgray !important;
+    cursor: pointer;
+    border-radius: 20px;
+    
+}
+
+.borda {
+    border: black 1px solid;
+    border-radius: 20px;
+}
+
+.botao {
+    color: green !important; 
+    font-size: 30px;
+    background-color: transparent; 
+    border: white 0px solid;
+}
+
+.botao_quantidade {
+    color: blue !important; 
+    font-size: 15px;
+    background-color: transparent; 
+    border: white 0px solid;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.margem_quantidade {
+    padding-left: 4px; 
+    padding-right: 4px;
+}

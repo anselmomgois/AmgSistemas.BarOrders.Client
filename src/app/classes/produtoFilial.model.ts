@@ -10,5 +10,6 @@ export class ProdutoFilial {
                 public imageUrl:any,
                 public identificadorGrupoProduto:string,
                 public descricaoGrupoProduto:string,
-                public bolExibirGrupoProduto:boolean){}
+                public bolExibirGrupoProduto:boolean,
+                public quantidadeSolicitada:number){}
 }

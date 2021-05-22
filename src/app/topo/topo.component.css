@@ -10,3 +10,8 @@
     font-size: 12px;
     font-weight: bold;
   }
+
+  .efeitoMouse div:hover {
+    cursor: pointer;
+    color: yellowgreen !important;
+  }
