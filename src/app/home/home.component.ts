@@ -46,6 +46,12 @@ export class HomeComponent implements OnInit {
       
       this.route.params.subscribe((parametros: Params) => { 
         
+        if(localStorage.getItem(CONST_EXIBIR_CARRINHO) != null)
+        {
+          let exibirCarrinho = localStorage.getItem(CONST_EXIBIR_CARRINHO)
+          this.exibirCarrinho = JSON.parse(exibirCarrinho)
+        } 
+
         this.filialService.RecuperarFilial(parametros.id)
         .then((retorno:RetornoGenerico) => {
           this.filial = retorno.retorno  
@@ -57,8 +63,7 @@ export class HomeComponent implements OnInit {
             
             this.grupoProdutoService.RecuperarGruposProdutos(parametros.id)
             .subscribe((retorno:RetornoGenerico) => {
-              this.gruposProdutos = retorno.retorno;
-              console.log(this.gruposProdutos)
+              this.gruposProdutos = retorno.retorno;             
             }, 
             (error:any) => {
               console.log(error)
@@ -79,7 +84,7 @@ export class HomeComponent implements OnInit {
                 produto.imageUrl = this.sanitizer.bypassSecurityTrustUrl ('data:image/jpg;base64,' + produto.imagem); 
                 produto.quantidadeSolicitada = 0
               });
-              console.log(this.produtosFilial)
+             
               let tempo = interval(2000)
               this.tempoObservableSubscription = tempo.subscribe((intervalo:number) => {
                 
@@ -117,7 +122,8 @@ export class HomeComponent implements OnInit {
     
     public configurarVisibilidadeCarrinho(item:string):void {     
       
-      this.exibirCarrinho = (item == CONST_EXIBIR_CARRINHO)    
+      this.exibirCarrinho = (item == CONST_EXIBIR_CARRINHO)  
+      localStorage.setItem(CONST_EXIBIR_CARRINHO,JSON.stringify(this.exibirCarrinho))  
     }
   
 }

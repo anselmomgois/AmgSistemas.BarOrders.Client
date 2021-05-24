@@ -92,7 +92,7 @@ export class CarrinhoService {
         return quantidade
     }
 
-    public removerItemCarrinho(identificadorProdutoFilial:string)
+    public removerItemCarrinho(identificadorProdutoFilial:string):void
     {
         let itemRemover :ItemPedido =  this.pedido.itensPedido.find((item:ItemPedido) => item.identificadorProdutoFilial == identificadorProdutoFilial)
        
@@ -106,5 +106,39 @@ export class CarrinhoService {
 
        localStorage.setItem('pedido',JSON.stringify(this.pedido))
        console.log(this.pedido)
+    }
+
+    public IncrementarQuantidade(identificadorProdutoFilial:string):number {
+
+        let quantidade:number = 0
+
+        let itemAtualizar :ItemPedido =  this.pedido.itensPedido.find((item:ItemPedido) => item.identificadorProdutoFilial == identificadorProdutoFilial)
+       
+        if(itemAtualizar != undefined && itemAtualizar != null)
+        {
+            itemAtualizar.quantidade += 1
+            quantidade = itemAtualizar.quantidade
+        }
+
+        localStorage.setItem('pedido',JSON.stringify(this.pedido))
+
+        return quantidade
+    }
+
+    public DecrementarQuantidade(identificadorProdutoFilial:string):number {
+
+        let quantidade:number = 0
+
+        let itemAtualizar :ItemPedido =  this.pedido.itensPedido.find((item:ItemPedido) => item.identificadorProdutoFilial == identificadorProdutoFilial)
+       
+        if(itemAtualizar != undefined && itemAtualizar != null)
+        {
+            itemAtualizar.quantidade -= 1
+            quantidade = itemAtualizar.quantidade
+        }
+
+        localStorage.setItem('pedido',JSON.stringify(this.pedido))
+        
+        return quantidade
     }
 }

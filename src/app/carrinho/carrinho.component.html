@@ -31,13 +31,16 @@
             <td class="ColunaNumerica" style="width: 80px !important;">
                 <div class="row">
                     <div class="col-3 margem_quantidade">
-                        <button type="button" style="position: absolute; padding-top: 9px; padding-left: 3px;"  class="fas fa-minus-circle botao_quantidade"></button>
+                        <button type="button" style="position: absolute; padding-top: 9px; padding-left: 3px; " 
+                         class="fas fa-minus-circle botao_quantidade" (click)="Decrementar(item)"></button>
                     </div>
-                    <div class="col-6 margem_quantidade" >
-                        <input type="text" id="txtQuantidade" style="width: 40px; border-radius: 20px; text-align: center;" [value]="item.quantidade" disabled>                            
+                    <div class="col-6 margem_quantidade">
+                        <input type="text" id="txtQuantidade" style=" width: 40px; border-radius: 20px; text-align: center;" [value]="item.quantidade" disabled>                            
                     </div>
-                    <div class="col-3 margem_quantidade">
-                        <button type="button" style="position: absolute; padding-top: 9px; padding-right: 3px;"    class="fas fa-plus-circle botao_quantidade"></button>
+                    <div class="col-3 margem_quantidade" style="display: flex;">
+                        <button type="button" style="position: absolute; padding-top: 9px; padding-right: 3px; 
+                        transform: translate(-3px,-1px);"    class="fas fa-plus-circle botao_quantidade"
+                        (click)="Incrementar(item)"></button>
                     </div>
                 </div>
             </td>
@@ -52,4 +55,14 @@
             </td>
         </tr>
     </table>
+    <div class="row">
+        <div class="col-12">
+            <h6 class="fonte_texto" style="text-align: right;">Valor Total:   {{valorTotal|currency:'BRL':true}}</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12" style="text-align: right;">
+            <button type="submit" class="btn btn-success fonte_texto">Enviar Pedido</button>
+        </div>
+    </div>
 </div>
