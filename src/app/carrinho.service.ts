@@ -11,7 +11,7 @@ export class CarrinhoService {
     constructor(){}
     
     public pedido:Pedido
-
+    
     public incluirItem(itemPedido:ItemPedido) {
         
         
@@ -46,99 +46,130 @@ export class CarrinhoService {
     
     public retornarPedido():Pedido {
         
-        console.log(this.pedido)
         if(this.pedido == undefined)
         {
             this.pedido = new Pedido(null,null,null,null,null);
             this.pedido.itensPedido = []
-        }      
-
-        if(localStorage.getItem('pedido') != null)
-        {
-            let pedido = localStorage.getItem('pedido')
             
-            if(pedido.length > 0)
+            if(localStorage.getItem('pedido') != null)
             {
-                this.pedido = JSON.parse(pedido)
+                let pedido = localStorage.getItem('pedido')
+                
+                if(pedido.length > 0)
+                {
+                    this.pedido = JSON.parse(pedido)
+                }
             }
-        }
+        } 
         
         return this.pedido
     }
     
     public retornarQuantidade():number {
-        console.log(this.pedido)
         let quantidade = 0
         
         if(this.pedido == undefined)
         {
             this.pedido = new Pedido(null,null,null,null,null);
             this.pedido.itensPedido = []
-        }       
-        
-        if(localStorage.getItem('pedido') != null)
-        {
-            let pedido = localStorage.getItem('pedido')
             
-            if(pedido.length > 0)
+            if(localStorage.getItem('pedido') != null)
             {
-                this.pedido = JSON.parse(pedido)
+                let pedido = localStorage.getItem('pedido')
+                
+                if(pedido.length > 0)
+                {
+                    this.pedido = JSON.parse(pedido)
+                }
             }
-        }
+        }  
+
         this.pedido.itensPedido.forEach((item:ItemPedido) => {
             quantidade += item.quantidade;
         })
         
         return quantidade
     }
-
+    
+    public retornarValorPedido():number {
+        let valorPedido = 0
+        
+        if(this.pedido == undefined)
+        {
+            this.pedido = new Pedido(null,null,null,null,null);
+            this.pedido.itensPedido = []
+            
+            if(localStorage.getItem('pedido') != null)
+            {
+                let pedido = localStorage.getItem('pedido')
+                
+                if(pedido.length > 0)
+                {
+                    this.pedido = JSON.parse(pedido)
+                }
+            }
+        }       
+        
+        
+        this.pedido.itensPedido.forEach((item:ItemPedido) => {
+            valorPedido += item.quantidade * item.valor;
+        })
+        
+        return valorPedido
+    }
+    
     public removerItemCarrinho(identificadorProdutoFilial:string):void
     {
         let itemRemover :ItemPedido =  this.pedido.itensPedido.find((item:ItemPedido) => item.identificadorProdutoFilial == identificadorProdutoFilial)
-       
-       if(itemRemover != undefined && itemRemover != null)
-       {
-           let index = this.pedido.itensPedido.indexOf(itemRemover)
-           console.log(index)
-           console.log(this.pedido)
-           this.pedido.itensPedido.splice(index)
-       }
-
-       localStorage.setItem('pedido',JSON.stringify(this.pedido))
-       console.log(this.pedido)
+        
+        if(itemRemover != undefined && itemRemover != null)
+        {
+            let index = this.pedido.itensPedido.indexOf(itemRemover)
+            console.log(index)
+            console.log(this.pedido)
+            this.pedido.itensPedido.splice(index)
+        }
+        
+        localStorage.setItem('pedido',JSON.stringify(this.pedido))
+        console.log(this.pedido)
     }
-
+    
     public IncrementarQuantidade(identificadorProdutoFilial:string):number {
-
+        
         let quantidade:number = 0
-
+        
         let itemAtualizar :ItemPedido =  this.pedido.itensPedido.find((item:ItemPedido) => item.identificadorProdutoFilial == identificadorProdutoFilial)
-       
+        
         if(itemAtualizar != undefined && itemAtualizar != null)
         {
             itemAtualizar.quantidade += 1
             quantidade = itemAtualizar.quantidade
         }
-
+        
         localStorage.setItem('pedido',JSON.stringify(this.pedido))
-
+        
         return quantidade
     }
-
+    
     public DecrementarQuantidade(identificadorProdutoFilial:string):number {
-
+        
         let quantidade:number = 0
-
+        
         let itemAtualizar :ItemPedido =  this.pedido.itensPedido.find((item:ItemPedido) => item.identificadorProdutoFilial == identificadorProdutoFilial)
-       
+        
         if(itemAtualizar != undefined && itemAtualizar != null)
         {
             itemAtualizar.quantidade -= 1
             quantidade = itemAtualizar.quantidade
         }
-
+        
         localStorage.setItem('pedido',JSON.stringify(this.pedido))
         
         return quantidade
+    }
+
+    public limparPedido():void {
+        this.pedido = null;
+        localStorage.removeItem('pedido')
     }
 }

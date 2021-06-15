@@ -115,14 +115,12 @@ export class HomeComponent implements OnInit {
       
     }
     
-    public receberItemPedido(item:string){
+    public atualizarQuantidadeItensPedido(){
       this.quantidadeItens = this.carrinhoService.retornarQuantidade()
-      
     }
     
     public configurarVisibilidadeCarrinho(item:string):void {     
-      
-      this.exibirCarrinho = (item == CONST_EXIBIR_CARRINHO)  
+      this.exibirCarrinho = (item == CONST_EXIBIR_CARRINHO)       
       localStorage.setItem(CONST_EXIBIR_CARRINHO,JSON.stringify(this.exibirCarrinho))  
     }
   

@@ -1,7 +1,7 @@
 <header class="fixed-top" style="background: black !important;">
     <div class="container">
         <nav class="navbar navbar-expand navbar-dark linha_botton "> 
-            <a class="navbar-brand" href="#" *ngIf="filial != undefined">      
+            <a class="navbar-brand" style="cursor:pointer;"  *ngIf="filial != undefined" (click)="exibirHome()">      
                 <img [src]="imageUrl" width="50" height="50" class="d-inline-block align-top" alt="">
                 {{filial.empresa.descricao}}
             </a>

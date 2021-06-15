@@ -1,4 +1,4 @@
-import { CONST_EXIBIR_CARRINHO } from './../classes/constantes';
+import { CONST_EXIBIR_CARRINHO, CONST_EXIBIR_PRODUTOS } from './../classes/constantes';
 import { CarrinhoService } from './../carrinho.service';
 import { ItemPedido } from './../classes/itemPedido.model';
 import { Mesa } from './../classes/mesa.model';
@@ -25,9 +25,9 @@ export class TopoComponent implements OnInit {
     @Input() public imageUrl:any    
     @Input() public gruposProdutos:GrupoProduto[]
     @Input() public mesa:Mesa
-    @Input() public quantidadeItens:number
+    @Input() public quantidadeItens:number    
     @Output() public exibirCarrinho:EventEmitter<string> = new EventEmitter()
-    public exibirCategorias:boolean = true;
+    @Input() public exibirCategorias:boolean = true;
 
     ngOnInit(): void {
       
@@ -35,9 +35,14 @@ export class TopoComponent implements OnInit {
       
     }
     
-    public ExibirCarrinho():void {
+    public ExibirCarrinho():void {           
       this.exibirCategorias = false
       this.exibirCarrinho.emit(CONST_EXIBIR_CARRINHO)
+    }  
+
+    public exibirHome() :void {
+      this.exibirCategorias = true
+      this.exibirCarrinho.emit(CONST_EXIBIR_PRODUTOS)
     }
   }
   

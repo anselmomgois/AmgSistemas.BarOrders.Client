@@ -36,7 +36,7 @@ export class ProdutoItemComponent implements OnInit {
   public AdicionarItem():void {
     
     let itemPedido:ItemPedido = new ItemPedido(null,this.produtoFilial.identificador, 
-      this.produtoFilial.quantidadeSolicitada > 0 ? this.produtoFilial.quantidadeSolicitada : 1)
+      this.produtoFilial.quantidadeSolicitada > 0 ? this.produtoFilial.quantidadeSolicitada : 1, this.produtoFilial.valor)
       
       this.carrinhoService.incluirItem(itemPedido)     
       this.enviarCarrinho.emit('PEDIDO_REALIZADO')                                  

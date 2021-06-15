@@ -1,5 +1,6 @@
 <app-topo [filial]="filial" [imageUrl]="imageUrlHome" [gruposProdutos]="gruposProdutos" [mesa]="mesa" 
-[quantidadeItens] = "quantidadeItens" (exibirCarrinho)="configurarVisibilidadeCarrinho($event)"></app-topo>
+[quantidadeItens] = "quantidadeItens" [exibirCategorias]="!exibirCarrinho" (exibirCarrinho)="configurarVisibilidadeCarrinho($event)"></app-topo>
 <app-produto *ngIf="!exibirCarrinho" [produtosFilial]="produtosFilial" [mesa]="mesa" 
-(enviarCarrinho)="receberItemPedido($event)"></app-produto>
-<app-carrinho *ngIf="exibirCarrinho"></app-carrinho>
+(enviarCarrinho)="atualizarQuantidadeItensPedido()"></app-produto>
+<app-carrinho *ngIf="exibirCarrinho" [mesa]="mesa" (atualizarQuantidade)="atualizarQuantidadeItensPedido()"
+(exibirCarrinho)="configurarVisibilidadeCarrinho($event)"></app-carrinho>
