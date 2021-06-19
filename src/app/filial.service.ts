@@ -1,3 +1,4 @@
+import { CONST_DADOS_FILIAL } from './classes/constantes';
 import { environment } from './../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -20,10 +21,20 @@ export class FilialService {
                .toPromise()
                .then((resposta:RetornoGenerico) => {
                    this.filial = resposta.retorno
-                   localStorage.setItem('dadosFilial',JSON.stringify(this.filial))
+                   localStorage.setItem(CONST_DADOS_FILIAL,JSON.stringify(this.filial))
                    return resposta;
                })
         
+    }
+
+    public RetornarDadosFilialMemoria():Filial {
+
+        if(this.filial == undefined || this.filial == null)
+        {
+          this.filial = JSON.parse(localStorage.getItem(CONST_DADOS_FILIAL))
+        }
+
+        return this.filial
     }
     
 }

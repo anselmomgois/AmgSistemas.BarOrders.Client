@@ -1,3 +1,4 @@
+import { Parametro } from './parametro.model';
 import { Empresa } from './empresa.model';
 export class Filial {
 
@@ -6,5 +7,6 @@ export class Filial {
                 public descricao:string,
                 public trabalhaPorMesa: boolean,
                 public solicitarTelefone: boolean,
-                public empresa:Empresa){}
+                public empresa:Empresa,
+                public parametros:Parametro[]){}
 }

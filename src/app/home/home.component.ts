@@ -56,7 +56,8 @@ export class HomeComponent implements OnInit {
         .then((retorno:RetornoGenerico) => {
           this.filial = retorno.retorno  
           
-          
+          console.log(this.filial)
+
           if (this.filial !== undefined && this.filial !== null) {
             this.imageUrlHome = this.sanitizer.bypassSecurityTrustUrl ('data:image/jpg;base64,' + this.filial.empresa.logo);  
             
